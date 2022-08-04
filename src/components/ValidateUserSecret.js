@@ -1,19 +1,28 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import axios from 'axios';
 import server from '../util/server';
+import AuthContext from '../context/AuthContext';
 
 function ValidateUserSecret() {
   const [userSecret, setUserSecret] = useState('');
+  const { getUser } = useContext(AuthContext);
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
 
-    const secret = {
+    const email = 'admin@test.com';
+
+    const data = {
+      email,
       userSecret,
     };
 
-    axios.post(`${server}/users/secret`, secret);
-    console.log(userSecret);
+    try {
+      await axios.post(`${server}/users/secret`, data).then(() => getUser());
+      console.log(userSecret);
+    } catch (error) {
+      console.log(error.response.data);
+    }
   };
 
   return (
