@@ -2,15 +2,17 @@ import { useState, useContext } from 'react';
 import axios from 'axios';
 import server from '../util/server';
 import AuthContext from '../context/AuthContext';
+import UserContext from '../context/UserContext';
 
 function ValidateUserSecret() {
   const [userSecret, setUserSecret] = useState('');
   const { getUser } = useContext(AuthContext);
+  const { userEmail } = useContext(UserContext);
+
+  const email = userEmail;
 
   const submitHandler = async (e) => {
     e.preventDefault();
-
-    const email = 'admin@test.com';
 
     const data = {
       email,

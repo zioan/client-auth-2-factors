@@ -7,9 +7,11 @@ const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const [error, setError] = useState('');
+  const [userEmail, setUserEmail] = useState('');
   const { user, getUser } = useContext(AuthContext);
 
   const login = async (email, password) => {
+    setUserEmail(email);
     const loginDetails = {
       email,
       password,
@@ -26,6 +28,7 @@ export const UserProvider = ({ children }) => {
   };
 
   const registerUser = async (email, password) => {
+    setUserEmail(email);
     const registerData = {
       email,
       password,
@@ -89,6 +92,7 @@ export const UserProvider = ({ children }) => {
         registerUser,
         updateUserEmail,
         updateUserPassword,
+        userEmail,
         error,
       }}
     >
