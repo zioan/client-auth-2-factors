@@ -84,6 +84,10 @@ export const UserProvider = ({ children }) => {
     }
   };
 
+  const clearUserEmail = () => {
+    setUserEmail('');
+  };
+
   return (
     <UserContext.Provider
       value={{
@@ -93,6 +97,7 @@ export const UserProvider = ({ children }) => {
         updateUserEmail,
         updateUserPassword,
         userEmail,
+        clearUserEmail,
         error,
       }}
     >

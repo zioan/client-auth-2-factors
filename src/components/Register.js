@@ -14,8 +14,6 @@ function Register() {
   const registerUserHandler = async (e) => {
     e.preventDefault();
 
-    // Check confirmation password
-    // If no match set error and clear error after 4s
     if (password !== confirmPassword) {
       setShowError('Password do not match!');
       setInterval(() => {
@@ -40,7 +38,8 @@ function Register() {
   };
 
   return (
-    <div>
+    <div className='border'>
+      <h4>Register</h4>
       <form onSubmit={registerUserHandler}>
         <div>
           <div>

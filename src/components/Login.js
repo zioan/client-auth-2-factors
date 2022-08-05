@@ -17,14 +17,13 @@ function Login() {
   };
 
   return (
-    <div>
+    <div className='border'>
+      <h4>Login</h4>
       <form onSubmit={loginHandler}>
         <div>
           {/* Email field */}
           <div>
-            <label>
-              <span>Email</span>
-            </label>
+            <label>Email</label>
             <input
               type='email'
               placeholder='email'
@@ -36,9 +35,7 @@ function Login() {
 
           {/* Password field */}
           <div>
-            <label>
-              <span>Password</span>
-            </label>
+            <label>Password</label>
             <input
               type='password'
               placeholder='password'

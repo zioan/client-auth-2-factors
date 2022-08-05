@@ -21,14 +21,14 @@ function ValidateUserSecret() {
 
     try {
       await axios.post(`${server}/users/secret`, data).then(() => getUser());
-      console.log(userSecret);
     } catch (error) {
       console.log(error.response.data);
     }
   };
 
   return (
-    <>
+    <div className='border'>
+      <h4>Validation</h4>
       <form onSubmit={submitHandler}>
         <label>Validation Code</label>
         <input
@@ -39,7 +39,7 @@ function ValidateUserSecret() {
         />
         <button type='submit'>Send</button>
       </form>
-    </>
+    </div>
   );
 }
 
